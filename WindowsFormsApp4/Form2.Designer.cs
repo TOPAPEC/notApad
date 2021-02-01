@@ -75,7 +75,7 @@ namespace WindowsFormsApp4
             this.toolStripMenuItemFormat});
             this.contextMenuStripRightClick.Name = "contextMenuStripRightClick";
             this.contextMenuStripRightClick.Size = new System.Drawing.Size(165, 214);
-            this.contextMenuStripRightClick.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStripRightClick_ItemClicked);
+            this.contextMenuStripRightClick.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ContextMenuStripRightClick_ItemClicked);
             // 
             // toolStripMenuItemBold
             // 

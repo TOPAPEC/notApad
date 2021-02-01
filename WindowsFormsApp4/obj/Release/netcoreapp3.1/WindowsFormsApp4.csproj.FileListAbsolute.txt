@@ -19,3 +19,4 @@ C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\obj\Release\netcoreapp3.1\Wi
 C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\obj\Release\netcoreapp3.1\WindowsFormsApp4.dll
 C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\obj\Release\netcoreapp3.1\WindowsFormsApp4.pdb
 C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\obj\Release\netcoreapp3.1\WindowsFormsApp4.genruntimeconfig.cache
+C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\obj\Release\netcoreapp3.1\WindowsFormsApp4.Properties.Resources.resources

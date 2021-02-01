@@ -132,7 +132,7 @@ namespace WindowsFormsApp4
             e.Cancel = true;
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void ButtonCancel_Click(object sender, EventArgs e)
         {
             Hide();
         }

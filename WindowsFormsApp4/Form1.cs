@@ -13,7 +13,7 @@ namespace WindowsFormsApp4
     public partial class FormMain : Form
     {
         static int FormCounter = 0;
-        int FormNumber;
+        readonly int FormNumber;
         /// <summary>
         /// Initialises main form. Also increment counter for additional forms created not to load previous state.
         /// </summary>
@@ -54,6 +54,7 @@ namespace WindowsFormsApp4
                 AutoSave = splitedState[1];
                 CompilerPath = splitedState[2];
                 BackupDelay = splitedState[3];
+                // Load previous state opened files.
                 for (int i = 4; i < splitedState.Length; i += 2)
                 {
                     try
@@ -89,7 +90,7 @@ namespace WindowsFormsApp4
         public FormState Formstate = new FormState();
         public int CountOpenedWindows = 0;
         Button lastClickedButton = null;
-        bool[] freeNewFileNames = new bool[256];
+        readonly bool[] freeNewFileNames = new bool[256];
         static FormSettings SettingsWindow = null;
         readonly ColorTheme darkTheme = new ColorTheme
         {
@@ -123,7 +124,7 @@ namespace WindowsFormsApp4
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void contextMenuStripFile_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void ContextMenuStripFile_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             contextMenuStripFile.Hide();
             try
@@ -177,7 +178,7 @@ namespace WindowsFormsApp4
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void contextMenuStripEdit_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void ContextMenuStripEdit_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             contextMenuStripEdit.Hide();
             try
@@ -223,7 +224,7 @@ namespace WindowsFormsApp4
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuStripMainWindow_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void MenuStripMainWindow_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             switch (e.ClickedItem.ToString())
             {
@@ -260,11 +261,13 @@ namespace WindowsFormsApp4
                 (ActiveMdiChild as FormFileWindow).Save("Current");
                 string strCmdText = $"/C {CompilerPath} {(ActiveMdiChild as FormFileWindow).FilePath}";
                 Process p = new Process();
-                ProcessStartInfo psi = new ProcessStartInfo();
-                psi.FileName = "CMD.EXE";
-                psi.Arguments = strCmdText;
-                psi.UseShellExecute = false;
-                psi.RedirectStandardOutput = true;
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = "CMD.EXE",
+                    Arguments = strCmdText,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                };
                 p.StartInfo = psi;
                 p.Start();
                 if (!p.WaitForExit(20 * 1000))
@@ -275,7 +278,7 @@ namespace WindowsFormsApp4
                 else
                 {
                     string output = p.StandardOutput.ReadToEnd();
-                    MessageBox.Show(output + $"{Environment.NewLine} You can find .exe file near your .cs one.");
+                    MessageBox.Show(output + $"{Environment.NewLine} You can find .exe file in notapad folder.");
                 }
             }
             catch (NullReferenceException ex)
@@ -314,9 +317,6 @@ namespace WindowsFormsApp4
         /// <returns></returns>
         private (string, string) GetFilePathViaDialog()
         {
-            var fileContent = string.Empty;
-            var filePath = string.Empty;
-
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "Txt files (*.txt)|*.txt|Rtf files (*.rtf)|*.rtf|C# files (*.cs)|*.cs";
@@ -473,9 +473,10 @@ namespace WindowsFormsApp4
                 else
                     fileName = Path.GetFileName(filePath);
                 newForm = CreateParameterizedTextWindow(Path.GetFileName(filePath), filePath, false);
+                // Checks file extensons and chooses actions.
                 if (Path.GetExtension(filePath) == ".rtf")
                 {
-                    newForm.LoadRichText(filePath);
+                    newForm.LoadRichText();
                 }
                 else if (Path.GetExtension(filePath) == ".txt")
                 {
@@ -544,7 +545,7 @@ namespace WindowsFormsApp4
         /// <param name="filePath"></param>
         /// <param name="isNextNew">If new window's file should be blank new file, then it should be set to true, otherwise false</param>
         /// <returns></returns>
-        private FormFileWindow CreateParameterizedTextWindow(string fileName, string filePath, bool isNextNew, bool isCode = false)
+        private FormFileWindow CreateParameterizedTextWindow(string fileName, string filePath, bool isNextNew)
         {
             try
             {
@@ -556,9 +557,10 @@ namespace WindowsFormsApp4
                     IsChangedFlag = false,
                     connectedButton = newFormButton
                 };
+                // Sets new filename and connects button to form.
                 newForm.ChangeFileName(fileName, isNextNew ? null : filePath);
-                newFormButton.Click += (sender, EventArgs) => { buttonNext_Click(sender, EventArgs, newForm); };
-                newFormButton.MouseDown += (sender, EventArgs) => { button_MouseWheelClick(sender, EventArgs, newForm); };
+                newFormButton.Click += (sender, EventArgs) => { ButtonNext_Click(sender, EventArgs, newForm); };
+                newFormButton.MouseDown += (sender, EventArgs) => { Button_MouseWheelClick(sender, EventArgs, newForm); };
                 flowLayoutPanelTabButtons.Controls.Add(newFormButton);
                 CountOpenedWindows++;
                 RefreshColorTheme();
@@ -576,7 +578,7 @@ namespace WindowsFormsApp4
         /// <param name="sender"></param>
         /// <param name="eventArgs"></param>
         /// <param name="newForm"></param>
-        private void button_MouseWheelClick(object sender, MouseEventArgs eventArgs, FormFileWindow newForm)
+        private void Button_MouseWheelClick(object sender, MouseEventArgs eventArgs, FormFileWindow newForm)
         {
             if (eventArgs.Button == MouseButtons.Middle)
             {
@@ -589,7 +591,7 @@ namespace WindowsFormsApp4
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <param name="formToShow"></param>
-        void buttonNext_Click(object sender, EventArgs e, Form formToShow)
+        void ButtonNext_Click(object sender, EventArgs e, Form formToShow)
         {
             try
             {
@@ -631,7 +633,7 @@ namespace WindowsFormsApp4
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void timerAutosave_Tick(object sender, EventArgs e)
+        private void TimerAutosave_Tick(object sender, EventArgs e)
         {
 
             try
@@ -691,6 +693,7 @@ namespace WindowsFormsApp4
                 MessageBox.Show($"Unexpected error happened while changing theme. {ex.Message}");
             }
         }
+
         /// <summary>
         /// Changes theme to white.
         /// </summary>
@@ -716,12 +719,13 @@ namespace WindowsFormsApp4
                 MessageBox.Show($"Unexpected error happened while changing theme. {ex.Message}");
             }
         }
+
         /// <summary>
         /// Handles backup timer tick.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void timerBackup_Tick(object sender, EventArgs e)
+        private void TimerBackup_Tick(object sender, EventArgs e)
         {
             try
             {
@@ -733,6 +737,7 @@ namespace WindowsFormsApp4
             }
         }
     }
+
     /// <summary>
     /// Class for representing color theme.
     /// </summary>
@@ -757,6 +762,7 @@ namespace WindowsFormsApp4
         {
             if (controlContainerSettings != null)
                 SetThisTheme(controlContainerSettings);
+            // Iterates through controls and changes them.
             foreach (Control component in controlContainerMain)
             {
                 SetThisTheme(component.Controls);
@@ -822,6 +828,7 @@ namespace WindowsFormsApp4
         /// <param name="comp"></param>
         public void SaveState(string currentTheme, string autoSaveDelay, string compilerPath, string backupDelay)
         {
+            // Saves current state data in special format.
             StringBuilder startupFileBuilder = new StringBuilder();
             startupFileBuilder.Append(currentTheme + "@@");
             startupFileBuilder.Append(autoSaveDelay + "@@");

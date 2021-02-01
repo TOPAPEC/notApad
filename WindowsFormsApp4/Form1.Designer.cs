@@ -75,7 +75,7 @@ namespace WindowsFormsApp4
             this.contextMenuStripFile.Name = "contextMenuStripFile";
             this.contextMenuStripFile.OwnerItem = this.toolStripMenuItemFile;
             this.contextMenuStripFile.Size = new System.Drawing.Size(219, 186);
-            this.contextMenuStripFile.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStripFile_ItemClicked);
+            this.contextMenuStripFile.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ContextMenuStripFile_ItemClicked);
             // 
             // toolStripMenuItemNewWindow
             // 
@@ -165,7 +165,7 @@ namespace WindowsFormsApp4
             this.menuStripMainWindow.Size = new System.Drawing.Size(629, 24);
             this.menuStripMainWindow.TabIndex = 3;
             this.menuStripMainWindow.Text = "menuStrip1";
-            this.menuStripMainWindow.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStripMainWindow_ItemClicked);
+            this.menuStripMainWindow.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuStripMainWindow_ItemClicked);
             // 
             // toolStripMenuItemEdit
             // 
@@ -184,7 +184,7 @@ namespace WindowsFormsApp4
             this.contextMenuStripEdit.Name = "contextMenuStripEdit";
             this.contextMenuStripEdit.OwnerItem = this.toolStripMenuItemEdit;
             this.contextMenuStripEdit.Size = new System.Drawing.Size(175, 76);
-            this.contextMenuStripEdit.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStripEdit_ItemClicked);
+            this.contextMenuStripEdit.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ContextMenuStripEdit_ItemClicked);
             // 
             // toolStripMenuItemUndo
             // 
@@ -243,11 +243,11 @@ namespace WindowsFormsApp4
             // timerAutoSave
             // 
             this.timerAutoSave.Interval = 10000;
-            this.timerAutoSave.Tick += new System.EventHandler(this.timerAutosave_Tick);
+            this.timerAutoSave.Tick += new System.EventHandler(this.TimerAutosave_Tick);
             // 
             // timerBackup
             // 
-            this.timerBackup.Tick += new System.EventHandler(this.timerBackup_Tick);
+            this.timerBackup.Tick += new System.EventHandler(this.TimerBackup_Tick);
             // 
             // FormMain
             // 

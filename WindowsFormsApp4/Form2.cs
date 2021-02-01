@@ -17,11 +17,7 @@ namespace WindowsFormsApp4
         public FormFileWindow()
         {
             InitializeComponent();
-
-
         }
-
-
 
         public int IndexInNewFileNamesIfUsedOne = -1;
         public string FilePath = null;
@@ -29,6 +25,10 @@ namespace WindowsFormsApp4
         public bool IsChangedFlag = false;
         public Button connectedButton;
 
+        /// <summary>
+        /// Show file dialog and returns chosen path.
+        /// </summary>
+        /// <returns></returns>
         private (string, string) GetFilePathViaDialog()
         {
             var fileContent = string.Empty;
@@ -46,6 +46,9 @@ namespace WindowsFormsApp4
                 return (null, null);
             }
         }
+        /// <summary>
+        /// Reformats code file.
+        /// </summary>
         public void FormatFile()
         {
             try
@@ -116,6 +119,7 @@ namespace WindowsFormsApp4
                 {
                     Directory.CreateDirectory(Path.Combine(@"notapadData", @"backups"));
                 }
+                // If file is rft process is a little different.
                 if (Path.GetExtension(FileName) == ".rtf")
                     richTextBoxFileContent.SaveFile(Path.Combine(Path.Combine("notapadData", "backups"), Path.GetFileName(FileName) + DateTime.Now.ToString("ddMMyyyyhhmmss") + ".rtf"));
                 else
@@ -218,7 +222,7 @@ namespace WindowsFormsApp4
         /// Loads file into richTextBox by its path.
         /// </summary>
         /// <param name="filepath"></param>
-        public void LoadRichText(string filepath)
+        public void LoadRichText()
         {
             richTextBoxFileContent.LoadFile(FilePath);
         }
@@ -309,7 +313,7 @@ namespace WindowsFormsApp4
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void contextMenuStripRightClick_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void ContextMenuStripRightClick_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             try
             {
