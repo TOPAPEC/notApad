@@ -1,0 +1,5 @@
+Program depends on:
+https://www.nuget.org/packages/EnvDTE/
+Also 
+https://www.nuget.org/packages/FCTB/
+is installed but not used. . . . . . .

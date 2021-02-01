@@ -1,0 +1,75 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "WindowsFormsApp4/1.0.0": {
+        "dependencies": {
+          "EnvDTE": "16.7.30508.193",
+          "FCTB": "2.16.24"
+        },
+        "runtime": {
+          "WindowsFormsApp4.dll": {}
+        }
+      },
+      "EnvDTE/16.7.30508.193": {
+        "dependencies": {
+          "stdole": "16.7.30508.193"
+        },
+        "runtime": {
+          "lib/netstandard2.0/EnvDTE.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.50727.932"
+          }
+        }
+      },
+      "FCTB/2.16.24": {
+        "runtime": {
+          "lib/FastColoredTextBox.dll": {
+            "assemblyVersion": "2.16.24.0",
+            "fileVersion": "2.16.24.0"
+          }
+        }
+      },
+      "stdole/16.7.30508.193": {
+        "runtime": {
+          "lib/netstandard2.0/stdole.dll": {
+            "assemblyVersion": "7.0.3300.0",
+            "fileVersion": "7.0.9466.1"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WindowsFormsApp4/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EnvDTE/16.7.30508.193": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BD5uEG7O10k/1ilczIdKE2vYz7A+fTHsChnKfXN+OIhdftlhH0hJrlN5aHdrqvzTZKh1PBrLqk5AswPFYHUGBQ==",
+      "path": "envdte/16.7.30508.193",
+      "hashPath": "envdte.16.7.30508.193.nupkg.sha512"
+    },
+    "FCTB/2.16.24": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7E+vfTh4kV4Cz9hkHehgbmJQh03EdaMWyjY3T9YA4snqI7Bi11zlAvJgyO5HNdkL+Znzas8yyYE9vuF+izxWQw==",
+      "path": "fctb/2.16.24",
+      "hashPath": "fctb.2.16.24.nupkg.sha512"
+    },
+    "stdole/16.7.30508.193": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BuXBjryTUyhb3Y9blTvpog1NBDkrP6QUJjY2ObJHRjHZ3IhlryMzhjc80BpLJ37ylxPI1Kr9GwkY+acUyCEdOw==",
+      "path": "stdole/16.7.30508.193",
+      "hashPath": "stdole.16.7.30508.193.nupkg.sha512"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "/DGoUdBwMucDjrJG9uKLg7DEEPVAr+McVSCNzYcu3JbJSkB5rUf/25knc15im0Bo7lEruJNaQDIhPKX33UY2WQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\DAN\\source\\repos\\NotApad+\\WindowsFormsApp4\\WindowsFormsApp4.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\DAN\\.nuget\\packages\\envdte\\16.7.30508.193\\envdte.16.7.30508.193.nupkg.sha512",
+    "C:\\Users\\DAN\\.nuget\\packages\\fctb\\2.16.24\\fctb.2.16.24.nupkg.sha512",
+    "C:\\Users\\DAN\\.nuget\\packages\\stdole\\16.7.30508.193\\stdole.16.7.30508.193.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'FCTB 2.16.24' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "FCTB",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+dark@@Off@@C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe@@Off@@Ссылки на пары.txt@@C:\Users\DAN\Desktop\Ссылки на пары.txt@@hello.cs@@C:\Users\DAN\Desktop\hello.cs@@new1.txt@@C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\bin\Debug\netcoreapp3.1\new1.txt

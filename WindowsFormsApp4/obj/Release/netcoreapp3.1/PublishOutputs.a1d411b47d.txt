@@ -1,0 +1,8 @@
+C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\bin\Release\netcoreapp3.1\publish\WindowsFormsApp4.exe
+C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\bin\Release\netcoreapp3.1\publish\WindowsFormsApp4.dll
+C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\bin\Release\netcoreapp3.1\publish\WindowsFormsApp4.deps.json
+C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\bin\Release\netcoreapp3.1\publish\WindowsFormsApp4.runtimeconfig.json
+C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\bin\Release\netcoreapp3.1\publish\WindowsFormsApp4.pdb
+C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\bin\Release\netcoreapp3.1\publish\EnvDTE.dll
+C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\bin\Release\netcoreapp3.1\publish\FastColoredTextBox.dll
+C:\Users\DAN\source\repos\NotApad+\WindowsFormsApp4\bin\Release\netcoreapp3.1\publish\stdole.dll
